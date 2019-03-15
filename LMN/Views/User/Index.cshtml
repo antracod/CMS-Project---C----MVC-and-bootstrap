@@ -1,0 +1,48 @@
+﻿@model IEnumerable<LMN.Models.User>
+
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>View</h2>
+
+<div class="col-md-4">
+    <p><a href="~/User/Create" class="btn btn-primary btn-lg">Create New User &raquo;</a></p>
+</div>
+
+<table class="table">
+    
+    <tr>
+        <th>
+            @Html.ActionLink("UserName", "Index", new { sortOrder = ViewBag.NameSortParm })
+        </th>
+        <th>
+            PassWord
+        </th>
+        <th>
+            @Html.ActionLink("Permission Level", "Index", new { sortOrder = ViewBag.DateSortParm })
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.userName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.passWord)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.permissionLevel)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>
