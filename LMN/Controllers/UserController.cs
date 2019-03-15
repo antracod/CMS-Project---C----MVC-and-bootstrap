@@ -16,7 +16,7 @@ namespace LMN.Controllers
         // GET: User
         private dbLmn.QAdminContext _context= new dbLmn.QAdminContext();
 
-        public ActionResult Index(string sortOrder)
+        public ActionResult Index(string sortOrder,string searchString)
         {
             
             var useList = from s in _context.Users
@@ -25,7 +25,16 @@ namespace LMN.Controllers
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
 
-           switch (sortOrder)
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                useList = useList.Where(s => s.userName.Contains(searchString)
+                                       || s.passWord.Contains(searchString));
+                                            
+            }
+
+
+            switch (sortOrder)
             {
                 case "name_desc":
                     useList = useList.OrderByDescending(s => s.userName);
@@ -37,7 +46,7 @@ namespace LMN.Controllers
                     useList = useList.OrderByDescending(s => s.permissionLevel);
                     break;
                 default:
-                    useList = useList.OrderBy(s => s.passWord);
+                    useList = useList.OrderBy(s => s.userName);
                     break;
             }
 
@@ -92,9 +101,7 @@ namespace LMN.Controllers
 
         [HttpPost]
         public ActionResult Edit(User user)
-        {
-            
-       
+        {   
                 try
                 {
                    
@@ -110,8 +117,6 @@ namespace LMN.Controllers
             
             return View(user);
         }
-
-
 
         public ActionResult Delete(int id)
         {
