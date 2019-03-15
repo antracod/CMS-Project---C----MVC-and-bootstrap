@@ -183,4 +183,8 @@ C:\Users\Teodor\source\repos\LMN\LMN\CMS-Project---C----MVC-and-bootstrap\LMN\ob
 C:\Users\Teodor\source\repos\LMN\LMN\CMS-Project---C----MVC-and-bootstrap\LMN\obj\Debug\LMN.csproj.CopyComplete
 C:\Users\Teodor\source\repos\LMN\LMN\CMS-Project---C----MVC-and-bootstrap\LMN\obj\Debug\LMN.dll
 C:\Users\Teodor\source\repos\LMN\LMN\CMS-Project---C----MVC-and-bootstrap\LMN\obj\Debug\LMN.pdb
+C:\Users\Teodor\source\repos\LMN\LMN\CMS-Project---C----MVC-and-bootstrap\LMN\bin\PagedList.dll
+C:\Users\Teodor\source\repos\LMN\LMN\CMS-Project---C----MVC-and-bootstrap\LMN\bin\PagedList.Mvc.dll
+C:\Users\Teodor\source\repos\LMN\LMN\CMS-Project---C----MVC-and-bootstrap\LMN\bin\PagedList.xml
+C:\Users\Teodor\source\repos\LMN\LMN\CMS-Project---C----MVC-and-bootstrap\LMN\bin\PagedList.Mvc.xml
 C:\Users\Teodor\source\repos\LMN\LMN\CMS-Project---C----MVC-and-bootstrap\LMN\obj\Debug\LMN.csprojAssemblyReference.cache

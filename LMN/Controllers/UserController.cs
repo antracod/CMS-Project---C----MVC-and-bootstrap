@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using System.Data.Entity;
 using LMN.Models;
 using System.Data;
+using PagedList;
 
 namespace LMN.Controllers
 {
@@ -16,13 +17,26 @@ namespace LMN.Controllers
         // GET: User
         private dbLmn.QAdminContext _context= new dbLmn.QAdminContext();
 
-        public ActionResult Index(string sortOrder,string searchString)
+        public ActionResult Index(string sortOrder,string searchString,string currentFilter, int? page)
         {
-            
+          
             var useList = from s in _context.Users
                       select s;
 
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+            
+            ViewBag.CurrentSort = sortOrder;
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+
             ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
 
 
@@ -50,8 +64,10 @@ namespace LMN.Controllers
                     break;
             }
 
-           
-            return View(useList.ToList());
+            int pageSize = 5;
+            int pageNumber = (page ?? 1);
+
+            return View(useList.ToPagedList(pageNumber,pageSize));
         }
 
         public ActionResult Details(int iD)
