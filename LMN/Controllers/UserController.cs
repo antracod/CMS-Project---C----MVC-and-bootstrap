@@ -120,7 +120,6 @@ namespace LMN.Controllers
         {   
                 try
                 {
-                   
                 _context.Users.Add(user);
                     _context.SaveChanges();
 

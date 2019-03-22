@@ -8,58 +8,9 @@ using System.Data.Entity;
 
 namespace LMN.Models
 {
-    public class User
-    {
-        public int Id { get; set; }
-        public string userName { get; set; }
-        public string passWord { get; set; }
-        public int permissionLevel { get; set; }
-    }
-    public class Course
-    {
-        public int Id { get; set; }
-        public string Title { get; set; }
-        public string Description { get; set; }
-        public CourseLevel Level { get; set; }
-        public float FullPrice { get; set; }
-        public Author Author { get; set; }
-        public IList<Tag> Tag { get; set; }
-    }
-
-    public class Author
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public IList<Course> Courses { get; set; }
-    }
-
-    public class Tag
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public IList<Course> Courses { get; set; }
-    }
-
-    public class Quiz
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public bool solvable { get; set; }
-    }
-
-    public enum CourseLevel
-    {
-        Beginner = 1,
-        Intermediate = 2,
-        Advanced = 3,
-
-    }
+    
     public class dbLmn
     {
-
-       
-
         public class QAdminContext : DbContext
         {
             public DbSet<Course> Courses { get; set; }
@@ -84,7 +35,6 @@ namespace LMN.Models
             }
         }
 
-
         public static void AddRandomQuizs()
         {
             using (var context = new QAdminContext())
@@ -102,7 +52,7 @@ namespace LMN.Models
         {
             using (var context = new QAdminContext())
             {
-                for(int i = 1; i<=100; i++)
+                for (int i = 1; i <= 100; i++)
                 {
                     var user = new User { Id = i, userName = RandomString(45), passWord = RandomString(45), permissionLevel = i };
                     context.Users.Add(user);
